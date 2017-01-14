@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://temilaj:temi123@ds159988.mlab.com:59988/tasky', ['tasks'])
+var db = mongojs('CONNECTIONSTRING HERE', ['tasks'])
 
 //GET Task
 router.get('/task/:id', function(req, res, next) {
@@ -36,7 +36,7 @@ router.get('/tasks', function(req, res, next) {
 
 
 //Save Tasks
-router.post('/task', function(req, response, next) {
+router.post('/task', function(req, res, next) {
     var task = req.body;
     if (!task.text || !(task.isCompleted + '')) {
         res.status(400);
@@ -55,7 +55,7 @@ router.post('/task', function(req, response, next) {
 });
 
 //Update Tasks
-router.put('/task/:id', function(req, response, next) {
+router.put('/task/:id', function(req, res, next) {
     var task = req.body;
     var updatedObj = {};
 
@@ -86,7 +86,7 @@ router.put('/task/:id', function(req, response, next) {
 });
 
 //Delete Task
-router.delete('/task/:id', function(req, response, next) {
+router.delete('/task/:id', function(req, res, next) {
     db.tasks.remove({
         _id: mongojs.ObjectId(req.params.id)
     }, '', function(err, result) {

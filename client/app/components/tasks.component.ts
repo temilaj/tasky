@@ -20,6 +20,21 @@ export class TasksComponent implements OnInit {
       .subscribe(tasks =>{
         // console.log(tasks);
         this.tasks = tasks;
-      })
+      });
+  }
+
+  addTask(event, taskText){
+    // console.log(taskText.value);
+    var result;
+    var newTask = {
+      text: taskText.value,
+      isCompleted: false
+    };
+
+    result = this._taskService.saveTask(newTask);
+    result.subscribe(x => {
+      this.tasks.push(newTask);
+      taskText.value ='';
+    });
   }
 }

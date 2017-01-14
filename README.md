@@ -1,7 +1,7 @@
 # Tasky
 [![Build Status][travis-badge]][travis-badge-url]
 
-Taksy is a simple MEAN stack application to keep track of tasks
+Tasky is a simple MEAN stack application to keep track of tasks
 This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
 
 It's been extended with testing support so you can start writing tests immediately.

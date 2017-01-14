@@ -1,9 +1,9 @@
 <div class="tasky-form text-center">
     <h1>New Task</h1>
     <div class="form-group">
-        <input type="text" class="form-control input-lg" id="" placeholder="Add new Task" autofocus #taskText>
+        <input type="text" class="form-control input-lg" autofocus placeholder="Add new Task" #taskText>
         <br>
-        <button (click)="addTask" class="btn btn-success btn-block">Add task</button>
+        <button (click)="addTask($event, taskText)" class="btn btn-success btn-block">Add task</button>
     </div>
 </div>
 
@@ -11,7 +11,9 @@
     <div *ngIf="tasks">
         <div *ngFor="let task of tasks">
             <div class="col-md-1">
-                <input type="checkbox">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                </label>
             </div>
             <div class="col-md-7">
                 {{task.text}}

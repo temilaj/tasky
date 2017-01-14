@@ -23,6 +23,20 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     };
+    TasksComponent.prototype.addTask = function (event, taskText) {
+        var _this = this;
+        // console.log(taskText.value);
+        var result;
+        var newTask = {
+            text: taskText.value,
+            isCompleted: false
+        };
+        result = this._taskService.saveTask(newTask);
+        result.subscribe(function (x) {
+            _this.tasks.push(newTask);
+            taskText.value = '';
+        });
+    };
     TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
