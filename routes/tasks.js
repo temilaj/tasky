@@ -60,7 +60,7 @@ router.put('/task/:id', function(req, res, next) {
     var updatedObj = {};
 
     if (task.isCompleted) {
-        updatedObj.isCompleted = task.iscompleted;
+        updatedObj.isCompleted = task.isCompleted;
     }
 
     if (task.text) {

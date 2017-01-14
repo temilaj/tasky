@@ -12,15 +12,17 @@
         <div *ngFor="let task of tasks">
             <div class="col-md-1">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input">
+                    <input type="checkbox" class="form-check-input" [checked]="task.isCompleted" (click)="updateTaskStatus(task)">
                 </label>
             </div>
             <div class="col-md-7">
-                {{task.text}}
+                <span *ngIf="!task.isEditMode">{{task.text}}</span>
+                <input type="text" *ngIf="task.isEditMode" [value]="task.text" (keypress)="updateTaskText($event, task)">
+                <input type="button" *ngIf="task.isEditMode" value="cancel" (click)="setEditState(task, false)" class="btn btn-warning">
             </div>
             <div class="col-md-4 btn-sm">
                 <input type="button" class="btn btn-danger btn-sm pull-right" value="Delete">
-                <input type="button" class="btn btn-default btn-sm pull-right" value="Edit">
+                <input type="button" [class.disabled]="task.isCompleted" (click)="setEditState(task, true)" class=" btn btn-default btn-sm pull-right " value="Edit ">
             </div>
         </div>
     </div>

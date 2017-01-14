@@ -25,6 +25,12 @@ var TaskService = (function () {
         return this._http.post('/api/v1/task', JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    TaskService.prototype.updateTask = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this._http.put('/api/v1/task/' + task._id, JSON.stringify(task), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     TaskService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
