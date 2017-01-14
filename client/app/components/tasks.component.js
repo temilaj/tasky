@@ -74,6 +74,20 @@ var TasksComponent = (function () {
             });
         }
     };
+    TasksComponent.prototype.deleteTask = function (task) {
+        var tasks = this.tasks;
+        console.log("delete task fn in component");
+        this._taskService.deleteTask(task._id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < tasks.length; i++) {
+                    if (tasks[i]._id == task._id) {
+                        tasks.splice(i, 1);
+                    }
+                }
+            }
+        });
+    };
     TasksComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

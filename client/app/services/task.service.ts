@@ -30,4 +30,9 @@ export class TaskService{
             .map(res => res.json());
         
     }
+
+    deleteTask(id){
+        return this._http.delete('/api/v1/task/'+id)
+            .map(res => res.json());
+    }
 }

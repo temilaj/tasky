@@ -31,6 +31,10 @@ var TaskService = (function () {
         return this._http.put('/api/v1/task/' + task._id, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    TaskService.prototype.deleteTask = function (id) {
+        return this._http.delete('/api/v1/task/' + id)
+            .map(function (res) { return res.json(); });
+    };
     TaskService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

@@ -60,21 +60,36 @@ export class TasksComponent implements OnInit {
       .subscribe(data => {
         task.isCompleted  = !task.isCompleted;
       });
-    }
+  }
 
-    updateTaskText(event, task){
-      if(event.which == 13){
-        task.text = event.target.value;
-        var _task = {
-          _id: task._id,
-          text: task.text,
-          isCompleted: task.isCompleted
-        };
+  updateTaskText(event, task){
+    if(event.which == 13){
+      task.text = event.target.value;
+      var _task = {
+        _id: task._id,
+        text: task.text,
+        isCompleted: task.isCompleted
+      };
 
-        this._taskService.updateTask(_task)
-        .subscribe(data => {
-          this.setEditState(task, false);
-        })
-      }
+      this._taskService.updateTask(_task)
+      .subscribe(data => {
+        this.setEditState(task, false);
+      })
     }
+  }
+
+  deleteTask(task){
+    var tasks = this.tasks;
+    console.log("delete task fn in component");
+    this._taskService.deleteTask(task._id)
+      .subscribe(data => {
+        if(data.n == 1){
+          for(var i = 0; i < tasks.length; i++){
+            if(tasks[i]._id == task._id){
+              tasks.splice(i, 1);
+            }
+          }
+        }
+      })
+  }
 }

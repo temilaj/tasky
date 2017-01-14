@@ -46,6 +46,10 @@ body {
     border-top: .05rem solid #e5e5e5;
 }
 
+.action-buttons button {
+    margin-right: 5px;
+}
+
 
 /* Customize container */
 

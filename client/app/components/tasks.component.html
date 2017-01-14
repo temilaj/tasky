@@ -18,11 +18,11 @@
             <div class="col-md-7">
                 <span *ngIf="!task.isEditMode">{{task.text}}</span>
                 <input type="text" *ngIf="task.isEditMode" [value]="task.text" (keypress)="updateTaskText($event, task)">
-                <input type="button" *ngIf="task.isEditMode" value="cancel" (click)="setEditState(task, false)" class="btn btn-warning">
+                <input type="button" *ngIf="task.isEditMode" value="cancel" (click)="setEditState(task, false)" class="btn btn-warning btn-sm">
             </div>
-            <div class="col-md-4 btn-sm">
-                <input type="button" class="btn btn-danger btn-sm pull-right" value="Delete">
-                <input type="button" [class.disabled]="task.isCompleted" (click)="setEditState(task, true)" class=" btn btn-default btn-sm pull-right " value="Edit ">
+            <div class="col-md-4 btn-sm action-buttons">
+                <button type="button" class="btn btn-danger btn-sm pull-right" (click)="deleteTask(task)"><i class="fa fa-trash"></i> Delete</button>
+                <button type="button" [class.disabled]="task.isCompleted" (click)="setEditState(task, true)" class=" btn btn-default btn-sm pull-right"><i class="fa fa-pen"></i>Edit</button>
             </div>
         </div>
     </div>
