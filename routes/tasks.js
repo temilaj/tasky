@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('CONNECTIONSTRING HERE', ['tasks'])
+var db = mongojs(process.env.DB_Connection_String, ['tasks'])
 
 //GET Task
 router.get('/task/:id', function(req, res, next) {
@@ -27,8 +27,10 @@ router.get('/tasks', function(req, res, next) {
     // res.send('TASKY API');
     db.tasks.find(function(err, tasks) {
         if (err) {
+            console.log(process.env.DB_Connection_String);
             res.send(err);
         } else {
+            console.log(process.env.DB_Connection_String);
             res.json(tasks);
         }
     });
