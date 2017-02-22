@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('CONNECTIONSTRING HERE', ['tasks'])
+// var db = mongojs('CONNECTIONSTRING HERE', ['tasks'])
+var db = mongojs('mongodb://temilaj:temi123@ds159988.mlab.com:59988/tasky', ['tasks'])
 
 //GET Task
 router.get('/task/:id', function(req, res, next) {

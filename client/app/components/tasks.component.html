@@ -17,6 +17,7 @@
             </div>
             <div class="col-md-7">
                 <span *ngIf="!task.isEditMode">{{task.text}}</span>
+                <!--<span *ngIf="!task.isEditMode">{{task.text}} {{task._id}}</span>-->
                 <input type="text" *ngIf="task.isEditMode" [value]="task.text" (keypress)="updateTaskText($event, task)">
                 <input type="button" *ngIf="task.isEditMode" value="cancel" (click)="setEditState(task, false)" class="btn btn-warning btn-sm">
             </div>
