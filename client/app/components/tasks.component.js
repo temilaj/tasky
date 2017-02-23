@@ -40,10 +40,10 @@ var TasksComponent = (function () {
     TasksComponent.prototype.setEditState = function (task, state) {
         if (state) {
             task.isEditMode = state;
-            console.log("task edit state set to" + state);
+            console.log("task in edit mode" + state);
         }
         else {
-            console.log("task edit state is false");
+            console.log("task no longer in edit mode");
             delete task.isEditMode;
         }
     };
@@ -53,14 +53,13 @@ var TasksComponent = (function () {
             text: task.text,
             isCompleted: !task.isCompleted
         };
-        console.log("task updated" + task);
+        console.log("task updated" + task.value);
         this._taskService.updateTask(_task)
             .subscribe(function (data) {
             task.isCompleted = !task.isCompleted;
         });
     };
     TasksComponent.prototype.updateTaskText = function (event, task) {
-        var _this = this;
         if (event.which == 13) {
             task.text = event.target.value;
             var _task = {
@@ -70,7 +69,8 @@ var TasksComponent = (function () {
             };
             this._taskService.updateTask(_task)
                 .subscribe(function (data) {
-                _this.setEditState(task, false);
+                // this.setEditState(task, false);
+                task.isCompleted = !task.isCompleted;
             });
         }
     };

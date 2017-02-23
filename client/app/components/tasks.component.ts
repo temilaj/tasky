@@ -41,10 +41,10 @@ export class TasksComponent implements OnInit {
   setEditState(task, state){
     if(state){
       task.isEditMode = state;
-      console.log("task edit state set to" + state)
+      console.log("task in edit mode" + state)
     }
     else{
-      console.log("task edit state is false");
+      console.log("task no longer in edit mode");
       delete task.isEditMode;
     }
   }
@@ -55,7 +55,7 @@ export class TasksComponent implements OnInit {
       text: task.text,
       isCompleted: !task.isCompleted
     };
-    console.log("task updated" + task);
+    console.log("task updated" + task.value);
     this._taskService.updateTask(_task)
       .subscribe(data => {
         task.isCompleted  = !task.isCompleted;
@@ -73,8 +73,9 @@ export class TasksComponent implements OnInit {
 
       this._taskService.updateTask(_task)
       .subscribe(data => {
-        this.setEditState(task, false);
-      })
+        // this.setEditState(task, false);
+        task.isCompleted = !task.isCompleted;
+      });
     }
   }
 

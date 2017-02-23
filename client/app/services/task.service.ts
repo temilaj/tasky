@@ -19,7 +19,7 @@ export class TaskService{
 
         headers.append('Content-Type', 'application/json');
         return this._http.post('/api/v1/task', JSON.stringify(task), {headers: headers})
-            .map(res => res.json()); //use map because observable
+            .map(res => res.json()); //use map because it's an observable response
     }
 
     updateTask(task){
