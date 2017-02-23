@@ -1,5 +1,5 @@
 var express = require('express');
-var path = require('path');
+var path = require('path'); //core module
 var bodyParser = require('body-parser');
 
 require('dotenv').config();
@@ -12,7 +12,7 @@ var app = new express();
 //View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
+app.engine('html', require('ejs').renderFile); //to parse html files
 app.use(express.static(path.join(__dirname, 'client')))
 
 app.use(bodyParser.json());
